@@ -1,0 +1,49 @@
+{% extends 'hosting/base.html' %}
+{% load i18n static %}
+
+{% block page_class %} search{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'hosting/js/search.js' %}"></script>
+{% endblock %}
+
+{% block page %}
+    <form class="form-inline row search" id="searchform" role="form" method="GET" action="">
+        <div class="form-group" style="width: 100%">
+            <div class="input-group" style="width: 100%">
+                <input class="form-control" type="search" id="searchinput" name="q" value="{{ request.GET.q|title }}" placeholder="{% trans "Budapest, London, Venezuela, etc." %}">
+                <span class="input-group-btn" style="width: 20%">
+                    <button class="btn btn-default" type="submit" id="search" style="min-width: 40px; width: 50%;">
+                        <span class="glyphicon glyphicon-search"></span>
+                        <span class="hidden-xs">{% trans "Search" %}</span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </form>
+
+    {% for place in place_list %}
+        <div class="row place-list">
+            <div class="col-xs-3 col-sm-2 col-md-1 avatar">
+                <a href="{{ place.get_absolute_url }}">
+                    <img src="{{ place.owner.avatar_url }}" />
+                </a>
+            </div>
+            <div class="col-xs-5 col-sm-6 col-md-7 name">
+                <a href="{{ place.owner.get_absolute_url }}">{{ place.owner.anonymous_name }}</a>
+            </div>
+            <div class="col-xs-4 status">
+                {% if not place.available %}{% trans "unavailable" %}{% endif %}
+            </div>
+            <div class="col-xs-9 col-sm-10 col-md-11 address">
+                <div class="pull-right">{% include 'hosting/snippets/checked.html' with object=place %}</div>
+                <a href="{{ place.get_absolute_url }}">
+                    <strong>{{ place.city }}</strong><br />
+                    {{ place.country.name }}
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="row place-list">{% trans "Sorry, no kind hosts found…" %}</div>
+    {% endfor %}
+{% endblock page %}
