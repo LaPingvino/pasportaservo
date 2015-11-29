@@ -226,7 +226,7 @@ class SearchView(generic.ListView):
 
     def first_with_bounds(self, locations):
         for location in locations:
-            if location.raw.has_key('bounds'):
+            if 'bounds' in location.raw:
                 return location
 
     def get(self, request, *args, **kwargs):
@@ -241,7 +241,7 @@ class SearchView(generic.ListView):
 
     def get_queryset(self):
         """Find location by bounding box. Filters also by country,
-        because some bbox for some countres are huge (e.g. France, USA).
+        because some bbox are huge for some countries with colonies (e.g. France, USA).
         """
         qs = Place.objects.none()
         if self.query and self.locations:

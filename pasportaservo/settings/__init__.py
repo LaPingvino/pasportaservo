@@ -4,18 +4,8 @@ Django settings for pasportaservo project.
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
- 
-from django.conf import global_settings
-from django.core.exceptions import ImproperlyConfigured
-from django.utils.translation import ugettext_lazy as _
 
-def get_env_variable(var_name):
-    """ Get the environment variable or return exception """
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = "Set the %s environment variable" % var_name
-    raise ImproperlyConfigured(error_msg)
+from django.conf import global_settings
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -24,9 +14,9 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 STATICFILES_DIRS = (os.path.join(PROJECT_DIR, 'static'), )
 
@@ -107,15 +97,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
 LANGUAGE_CODE = 'eo'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 SITE_ID = 1
 
@@ -133,8 +118,6 @@ DEFAULT_FROM_EMAIL = 'ne-respondu@pasportaservo.org'
 # Non-Django settings:
 
 SITE_NAME = "Pasporta Servo"
-
-GRAPPELLI_ADMIN_TITLE = _("Pasporta Servo administration")
 
 
 # Helps entering phone numbers with "00" instead of "+"

@@ -28,10 +28,9 @@ EMAIL_USE_SSL = secrets.EMAIL_USE_SSL
 SERVER_EMAIL = secrets.SERVER_EMAIL
 DEFAULT_FROM_EMAIL = secrets.DEFAULT_FROM_EMAIL
 
-STATIC_URL = 'http://static.pasportaservo.org/'
-MEDIA_URL = 'http://static.pasportaservo.org/media/'
-
 ALLOWED_HOSTS = [
+    'localhost',
+    'pasportaservo.me',
     'pasportaservo.org',
     'www.pasportaservo.org',
 ]
