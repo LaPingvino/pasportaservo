@@ -146,11 +146,4 @@ POSTMAN_DISALLOW_MULTIRECIPIENTS = True
 POSTMAN_DISALLOW_COPIES_ON_REPLY = True
 POSTMAN_NOTIFIER_APP = None
 
-try:
-    from pasportaservo.settings.local_settings import *
-except ImportError:
-    from warnings import warn
-    warn("\nSymbolic link local_settings.py not found. Please create it in the 'settings' folder.",
-    UserWarning)
-
 OPENCAGE_KEY = 'a27f7e361bdfe11881a987a6e86fb5fd'
