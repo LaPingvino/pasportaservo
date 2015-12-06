@@ -1,4 +1,4 @@
-# ![Pasporta Servo 3](logos/pasportaservo_readme.svg)
+# ![Pasporta Servo 3](https://cdn.rawgit.com/batisteo/pasportaservo/novaservilo/logos/pasportaservo_readme.svg)
 
 [![Python 3.4](https://img.shields.io/badge/Python-3.4-blue.svg)](https://docs.python.org/3.4/)
 [![Django 1.7](https://img.shields.io/badge/Django-1.7-0C4B33.svg)](https://docs.djangoproject.com/en/1.7/)
